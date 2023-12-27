@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BorsaUygulama.MainPage"
+            BarBackgroundColor="#DADADA"
+            BarTextColor="#204969" 
+            SelectedTabColor="#14c393"
+            UnselectedTabColor="#DADADA">
+
+    <ContentPage Title="Hisse Ekle" x:Name="MainPage_Hisse_Ekle" BackgroundImageSource="hisse_ekle_bg_last.png">
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0, -200, 0, 0">
+            <HorizontalStackLayout 
+            HorizontalOptions="Center"
+            Padding="0, 20, 0, 0">
+                <Label
+                Text="Alış - Satış:"
+                Padding="0, 10, 15, 0"/>
+
+                <Picker x:Name="HisseEkle_HisseAlimSatim_Picker"
+                BackgroundColor="ForestGreen"
+                WidthRequest="100"
+                Margin="0, 0, 50, 0">
+
+                    <Picker.Items>
+                        <x:String>Alınan</x:String>
+                        <x:String>Satılan</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label
+                Text="Hisse seçiniz:"
+                Padding="0, 10, 20, 0"/>
+
+                <Picker
+                x:Name="HisseEkle_HisseSec_Picker"
+                BackgroundColor="ForestGreen"
+                WidthRequest="100"/>
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout 
+                HorizontalOptions="Center"
+                Padding="0, 20, 0, 0">
+
+                <Label
+                Text="Hisse alım adedi:"
+                Padding="0, 10, 20, 0"/>
+
+                <Entry
+                    x:Name="HisseEkle_HisseAdet_Entry"
+                    WidthRequest="120"
+                    Placeholder="Örnek: 70000"
+                    Keyboard="Numeric"/>
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout 
+                HorizontalOptions="Center"
+                Padding="0, 20, 0, 0">
+
+                <Label
+                Text="Hisse alım fiyatı:"
+                Padding="0, 10, 20, 0"/>
+
+                <Entry
+                    x:Name="HisseEkle_HisseFiyat_Entry"
+                    WidthRequest="120"
+                    Placeholder="Örnek: 20,470"
+                    Keyboard="Numeric"/>
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Padding="0, 20, 0, 0">
+                <Button
+                    x:Name="HisseEkle_Temizle_Button"
+                    Pressed="HisseEkle_Temizle_Button_Pressed"
+                    Released="HisseEkle_Temizle_Button_Released"
+                    Text="Temizle"
+                    TextColor="WhiteSmoke"
+                    BackgroundColor="DarkRed"
+                    WidthRequest="100"
+                    Margin="0, 0, 15, 0"/>
+
+                <Button
+                    x:Name="HisseEkle_Kaydet_Button"
+                    Pressed="HisseEkle_Kaydet_Button_Pressed"
+                    Released="HisseEkle_Kaydet_Button_Released"
+                    Text="Kaydet"
+                    TextColor="LightCyan"
+                    BackgroundColor="DarkSeaGreen"
+                    WidthRequest="100"/>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Hisse İşlemleri" BackgroundImageSource="hisse_goruntule_bg_last.png">
+
+        <VerticalStackLayout>
+
+            <VerticalStackLayout>
+
+                <Button Text="Alınan Hisseleri Getir" Clicked="Alinan_Hisseleri_Getir_Button_Clicked" BackgroundColor="Green" WidthRequest="200" HeightRequest="50"/>
+                <Button Text="Satılan Hisseleri Getir" Clicked="Satilan_Hisseleri_Getir_Button_Clicked" BackgroundColor="Yellow" WidthRequest="200" HeightRequest="50"/>
+                <Button Text="Seçili Kaydı Sil" Clicked="Secili_Kaydi_Sil_Button_Clicked" BackgroundColor="Red" WidthRequest="200" HeightRequest="50"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="Hisse Adı" WidthRequest="100"/>
+                    <Label Text="Alım Satım" WidthRequest="100"/>
+                    <Label Text="Hisse Adedi" WidthRequest="100"/>
+                    <Label Text="Hisse Fiyatı" WidthRequest="100"/>
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+
+            <CollectionView  x:Name="HisseleriListele" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+
+                            <HorizontalStackLayout HorizontalOptions="Center">
+                                <Label Text="{Binding HisseAdi}" WidthRequest="100"/>
+                                <Label Text="{Binding AlimSatim}" WidthRequest="100"/>
+                                <Label Text="{Binding HisseAdedi}" WidthRequest="100"/>
+                                <Label Text="{Binding HisseFiyat}" WidthRequest="100"/>
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ContentPage>
+
+    <!--#region Hisse işlemleri deneme page -->
+    <!--<ContentPage Title="Hisse İşlemleri">
+        <VerticalStackLayout>
+
+            <Label Text="tabbed deneme sayfa 3"/>
+
+        </VerticalStackLayout>
+    </ContentPage>-->
+    <!--#endregion-->
+
+    <ContentPage Title="Hesabım" x:Name="hesabimSayfa">
+        <VerticalStackLayout
+            BackgroundColor="Black"
+            Spacing="25"
+            HorizontalOptions="Center">
+
+            <VerticalStackLayout x:Name="Hesap_Bilgileri">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Aktif Kullanıcı Bilgileri"
+                    BackgroundColor="BlueViolet"
+                    TextColor="WhiteSmoke"
+                    FontSize="Medium"
+                    Margin="0,0,0,20"/>
+
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label
+                        Text="Ad:"
+                        TextColor="Yellow"
+                        FontSize="Small"/>
+                    <Label
+                        x:Name="Hesabim_Ad"
+                        BackgroundColor="Red"
+                        TextColor="WhiteSmoke"
+                        FontSize="Small"
+                        WidthRequest="100"
+                        Margin="20,0,0,20"/>
+                </HorizontalStackLayout>
+                
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label
+                        Text="Soyad:"
+                        TextColor="Yellow"
+                        FontSize="Small"/>
+                    <Label
+                        x:Name="Hesabim_Soyad"
+                        BackgroundColor="Red"
+                        TextColor="WhiteSmoke"
+                        FontSize="Small"
+                        WidthRequest="100"
+                        Margin="10,0,0,40"/>
+                </HorizontalStackLayout>
+
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Şifre Değiştir"
+                    BackgroundColor="BlueViolet"
+                    TextColor="WhiteSmoke"
+                    FontSize="Medium"
+                    Margin="0,0,0,20"/>
+
+                <HorizontalStackLayout>
+                    <Label
+                        x:Name="Hesabim_Sifre"
+                        WidthRequest="150"
+                        VerticalOptions="Center"
+                        Text="Yeni Şifre"
+                        BackgroundColor="Red"
+                        TextColor="WhiteSmoke"
+                        Margin="0,0,30,0"/>
+
+                    <Entry 
+                        x:Name="txtSifre_update"
+                        IsPassword="True"
+                        Placeholder="şifre"
+                        WidthRequest="250"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout>
+                    <Label
+                        x:Name="Hesabim_Sifre_Tekrar"
+                        WidthRequest="150"
+                        VerticalOptions="Center"
+                        Text="Yeni Şifre Tekrar"
+                        BackgroundColor="Red"
+                        TextColor="WhiteSmoke"
+                        Margin="0,0,30,0"/>
+
+                    <Entry 
+                        x:Name="txtSifre_tekrar_update"
+                        IsPassword="True"
+                        Placeholder="şifre tekrar"
+                        WidthRequest="250"/>
+
+                </HorizontalStackLayout>
+
+                <Label
+                    x:Name="Yanlis_sifre_bilgileri"
+                    Text="Girdiğiniz Şifreler Eşleşmiyor!"
+                    HorizontalOptions="Center"
+                    WidthRequest="300"
+                    IsVisible="false"
+                    TextColor="Cyan"/>
+
+            </VerticalStackLayout>
+
+            <Button
+                    x:Name="Hesabim_Sifre_Degistir_Btn"
+                    BackgroundColor="Yellow"
+                    TextColor="Black"
+                    Text="Şifre Değiştir"
+                    Clicked="Hesabim_Sifre_Degistir_Btn_Clicked"/>
+
+            <Button
+                    x:Name="Hesabim_Cikis_Yap_Btn"
+                    BackgroundColor="Cyan"
+                    TextColor="Black"
+                    Text="Çıkış Yap"
+                    Clicked="Hesabim_Cikis_Yap_Btn_Clicked"/>
+
+
+        </VerticalStackLayout>
+
+    </ContentPage>
+
+
+
+</TabbedPage>

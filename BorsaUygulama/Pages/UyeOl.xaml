@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BorsaUygulama.Pages.UyeOl"
+          
+             Title="UyeOl">
+
+    <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0">
+
+        <Label 
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            Text="Kayıt için lütfen gerekli alanları doldurunuz"
+            TextColor="White"
+            FontSize="Large"/>
+
+        <Entry 
+            Placeholder="İsim"
+             BackgroundColor="#F6F1F1"
+            TextColor="#000000"
+            WidthRequest="300" 
+            x:Name="txtIsim"/>
+
+        <Entry 
+            Placeholder="Soyisim"
+             BackgroundColor="#F6F1F1"
+            TextColor="#000000"
+            WidthRequest="300" 
+            x:Name="txtSoyisim"/>
+
+        <Entry 
+            Placeholder="Kullanıcı Adı"
+             BackgroundColor="#F6F1F1"
+            TextColor="#000000"
+            WidthRequest="300" 
+            x:Name="txtKullaniciAdi"/>
+
+        <Entry 
+            Placeholder="Şifreniz"
+             BackgroundColor="#F6F1F1"
+            TextColor="#000000"
+            WidthRequest="300"
+            IsPassword="True"
+            x:Name="txtSifre"/>
+
+        <Entry 
+            Placeholder="Şifreniz Tekrar"
+           BackgroundColor="#F6F1F1"
+            TextColor="#000000"
+            WidthRequest="300" 
+            IsPassword="True"
+            x:Name="txtSifreTekrar"/>
+
+        <DatePicker 
+             BackgroundColor="#F6F1F1"
+            TextColor="#000000"
+            WidthRequest="300"
+            x:Name="pckDogumtarih"/>
+
+        <VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+
+                <Label Text="Erkek" VerticalOptions="Center"/>
+                <CheckBox x:Name="uye_Ol_CheckBox_Erkek" CheckedChanged="uye_Ol_CheckBox_Erkek_CheckedChanged"/>
+
+                <Label Text="Kadın" VerticalOptions="Center"/>
+                <CheckBox x:Name="uye_Ol_CheckBox_Kadın" CheckedChanged="uye_Ol_CheckBox_Kadın_CheckedChanged"/>
+
+                <Label Text="Boş Bırak" VerticalOptions="Center"/>
+                <CheckBox x:Name="uye_Ol_CheckBox_Unknown" CheckedChanged="uye_Ol_CheckBox_Unknown_CheckedChanged"/>
+
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+
+        <Button 
+            Text="Kayıt Ol" 
+            WidthRequest="300"
+            BackgroundColor="#E57C23" 
+            x:Name="btnKayıt"
+            Pressed="btnKayıt_Pressed"
+            Released="btnKayıt_Released"/>
+
+    </VerticalStackLayout>
+</ContentPage>
